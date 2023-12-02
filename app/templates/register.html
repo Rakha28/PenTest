@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block app_content %}
+	<h1>Register</h1>
+        {% if secure %}
+                {{ form.csrf_token }}
+                <div class="alert alert-success" role="alert">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        &nbsp;
+                        CSRF attack protection is <strong>enabled</strong>.
+                </div>
+        {% else %}
+                <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        &nbsp;
+                        CSRF attack protection is <strong>disabled</strong>.
+                </div>
+        {% endif %}
+
+        <div class="row">
+                <div class="col-md-4">
+                        {{ wtf.quick_form(form) }}
+                </div>
+        </div>
+{% endblock %}
